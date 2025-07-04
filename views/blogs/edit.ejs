@@ -1,0 +1,14 @@
+<%- include('../partials/header') %>
+<h2>Edit Blog</h2>
+<form action="/blogs/<%= blog._id %>?_method=PUT" method="POST">
+  <div class="mb-3">
+    <label>Title</label>
+    <input type="text" name="title" value="<%= blog.title %>" class="form-control" required>
+  </div>
+  <div class="mb-3">
+    <label>Content</label>
+    <textarea name="content" rows="8" class="form-control" required><%= blog.content %></textarea>
+  </div>
+  <button type="submit" class="btn btn-primary">Update</button>
+</form>
+<%- include('../partials/footer') %>

@@ -1,0 +1,19 @@
+<%- include('../partials/header') %>
+<h2><%= blog.title %></h2>
+<p><%= blog.content %></p>
+<small>By <%= blog.author.username %></small>
+<% if (currentUser && blog.author._id.equals(currentUser._id)) { %>
+  <a href="/blogs/<%= blog._id %>/edit" class="btn btn-warning btn-sm">Edit</a>
+  <form action="/blogs/<%= blog._id %>?_method=DELETE" method="POST" class="d-inline">
+    <button class="btn btn-danger btn-sm">Delete</button>
+  </form>
+<% } %>
+<hr>
+<h4>Comments</h4>
+<form action="/blogs/<%= blog._id %>/comments" method="POST">
+  <div class="mb-3">
+    <textarea name="text" class="form-control" placeholder="Write a comment..." required></textarea>
+  </div>
+  <button class="btn btn-secondary">Comment</button>
+</form>
+<%- include('../partials/footer') %>
